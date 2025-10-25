@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jimmy's Tiktok Shop</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f4f4f9;
+    }
+
+    header {
+      background-color: #ff6600;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background-color: #fff;
+      border-bottom: 2px solid #ddd;
+    }
+
+    nav button {
+      background: none;
+      border: none;
+      padding: 12px 20px;
+      cursor: pointer;
+      font-size: 16px;
+      color: #333;
+    }
+
+    nav button:hover, nav button.active {
+      border-bottom: 3px solid #ff6600;
+      color: #ff6600;
+      font-weight: bold;
+    }
+
+    .container {
+      padding: 20px;
+      display: none;
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    .container.active {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 20px;
+    }
+
+    .product {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 10px;
+      text-align: center;
+      transition: 0.3s;
+      position: relative;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+    }
+
+    .product img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .product h3 {
+      font-size: 16px;
+      margin: 10px 0 5px;
+    }
+
+    .product p {
+      color: #666;
+      font-size: 14px;
+    }
+
+    .product button {
+      background-color: #ff6600;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+    .product button:hover {
+      background-color: #e65c00;
+    }
+
+    /* Popup (Share modal) */
+    .share-popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      padding: 20px;
+      text-align: center;
+      z-index: 1000;
+      width: 300px;
+    }
+
+    .share-popup img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .share-popup p {
+      font-size: 14px;
+      word-wrap: break-word;
+      background: #f2f2f2;
+      padding: 8px;
+      border-radius: 5px;
+    }
+
+    .share-popup button {
+      background-color: #ff6600;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    .share-popup button:hover {
+      background-color: #e65c00;
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 900;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>🛍️ Jimmy's Tiktok Shop</header>
+
+  <nav>
+    <button class="tab active" data-tab="home">Home Supplies</button>
+    <button class="tab" data-tab="sports">Sports & Hobbies</button>
+    <button class="tab" data-tab="women">Womenswear</button>
+    <button class="tab" data-tab="beauty">Beauty Care</button>
+    <button class="tab" data-tab="baby">Baby & Maternity</button>
+    <button class="tab" data-tab="electronics">Electronics</button>
+    <button class="tab" data-tab="accessories">Fashion Accessories</button>
+    <button class="tab" data-tab="shoes">Shoes</button>
+    <button class="tab" data-tab="men">Menswear</button>
+    <button class="tab" data-tab="bags">Luggage & Bags</button>
+  </nav>
+
+  <!-- Home Supplies -->
+  <section class="container active" id="home">
+    <div class="product">
+	<p>Click the Picture</p>
+      <a href="https://bit.ly/3WWFEuk"><img src="H1.JPG" alt="Home Item"></a>
+      <button onclick="shareProduct('H1.JPG', 'https://bit.ly/3WWFEuk')">Share</button>
+    </div>
+
+    <div class="product">
+	<p>Click the Picture</p>
+      <a href="http://bit.ly/48HQCLx"><img src="H2.JPG" alt="Home Item"></a>
+      <button onclick="shareProduct('H2.JPG', 'http://bit.ly/48HQCLx')">Share</button>
+    </div>
+
+    <div class="product">
+	<p>Click the Picture</p>
+      <a href="http://bit.ly/3WSMYXV"><img src="H3.JPG" alt="Home Item"></a>
+      <button onclick="shareProduct('H3.JPG', 'http://bit.ly/3WSMYXV')">Share</button>
+    </div>
+
+    <div class="product">
+	<p>Click the Picture</p>
+      <a href="http://bit.ly/3WTlT6S"><img src="H4.JPG" alt="Home Item"></a>
+      <button onclick="shareProduct('H4.JPG', 'http://bit.ly/3WTlT6S')">Share</button>
+    </div>
+
+    <div class="product">
+	<p>Click the Picture</p>
+      <a href="http://bit.ly/4oHXn4R"><img src="H5.JPG" alt="Home Item"></a>
+      <button onclick="shareProduct('H5.JPG', 'http://bit.ly/4oHXn4R')">Share</button>
+    </div>
+
+    <div class="product">
+	<p>Click the Picture</p>
+      <a href="http://bit.ly/4npCWZj"><img src="H6.JPG" alt="Home Item"></a>
+      <button onclick="shareProduct('H6.JPG', 'http://bit.ly/4npCWZj')">Share</button>
+    </div>
+
+
+
+  </section>
+
+  <!-- Sports & Hobbies -->
+  <section class="container" id="sports">
+    <div class="product">
+      <img src="https://via.placeholder.com/150" alt="Sports Item">
+      <h3>Basketball</h3>
+      <p>₱599</p>
+      <button>Add to Cart</button>
+      <button onclick="shareProduct('https://via.placeholder.com/150', 'https://example.com/basketball')">Share</button>
+    </div>
+  </section>
+
+  <!-- Other categories... -->
+  <!-- You can add the same “Share” button for each product as shown above -->
+
+  <!-- Share Popup -->
+  <div class="overlay" id="overlay" onclick="closeShare()"></div>
+  <div class="share-popup" id="sharePopup">
+    <img id="shareImage" src="" alt="Product Image">
+    <p id="shareLink"></p>
+    <button onclick="copyLink()">Copy Link</button>
+    <button onclick="closeShare()">Close</button>
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const containers = document.querySelectorAll('.container');
+    const popup = document.getElementById('sharePopup');
+    const overlay = document.getElementById('overlay');
+    const shareImg = document.getElementById('shareImage');
+    const shareLink = document.getElementById('shareLink');
+
+    // Tab switching
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(btn => btn.classList.remove('active'));
+        tab.classList.add('active');
+        containers.forEach(section => {
+          section.classList.remove('active');
+          if (section.id === tab.dataset.tab) {
+            section.classList.add('active');
+          }
+        });
+      });
+    });
+
+    // Share popup function
+    function shareProduct(imgSrc, link) {
+      shareImg.src = imgSrc;
+      shareLink.textContent = link;
+      popup.style.display = 'block';
+      overlay.style.display = 'block';
+    }
+
+    function closeShare() {
+      popup.style.display = 'none';
+      overlay.style.display = 'none';
+    }
+
+    function copyLink() {
+      navigator.clipboard.writeText(shareLink.textContent);
+      alert('Product link copied!');
+    }
+  </script>
+
+</body>
+</html>
